@@ -3,6 +3,7 @@
 import random
 import sys
 
+global in_use
 in_use = True
 #Introduction to chatbot and receiving the user's name and age
 #Initializing the conversation
@@ -31,6 +32,30 @@ def display_menu():
   print('4. Need help deciding on account type?')
   print('5. Exit')
 
-display_menu()
+#User selection function
+def user_selection():
+  while True:
+    try:
+      selection = int(input("What would you like to do? (Put option number): "))
+      break
+    except ValueError:
+      print("Please enter a number")
+  
+  if selection == 1:
+    print("account type")
+  elif selection == 2:
+    print("generate an account number")
+  elif selection == 3:
+    print("security questions")
+  elif selection == 4:
+    print("need help deciding on account type?")
+  elif selection == 5:
+    global in_use
+    in_use = False
+    print("Exiting the chatbot, goodbye! :)")
+    sys.exit(0)
+  else:
+    print("Invalid Input, try again\n")
+    user_selection()
 
-selection = input("What would you like to do? (Put option number) ")
+user_selection()
